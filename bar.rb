@@ -22,8 +22,9 @@ end
 def serve_drink(customer, drink_choice)
     for drink in @drinks_menu
       if drink.type == drink_choice
-        @till.total_cash += drink.price
+        @till.receive_cash(drink.price)
         customer.cash -= drink.price
+        customer.drinks << drink_choice
       else
         return "Sorry, we don't have that drink"
       end

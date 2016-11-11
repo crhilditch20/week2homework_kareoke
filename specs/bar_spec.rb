@@ -36,6 +36,7 @@ def test_can_serve_drinks
   @bar.serve_drink(@customer, "wine")
   assert_equal(104, @bar.count_cash)
   assert_equal(36, @customer.cash)
+  assert_equal("wine", @customer.drinks[0])
   # assert_equal("Sorry, we don't have that drink", result)
 end
   
