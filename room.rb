@@ -14,19 +14,16 @@ def count_guests
 end
 
 def check_in_guest(guest)
-  space = count_guests
-    if space < @capacity
   @guests.push(guest)
-    else
-      return "Sorry, this room is full"
-    end
-  end
+end
 
 def check_out_guest(guest)
   @guests.delete(guest)
 end
 
-
-
+def return_first_song_name()
+  first = @song_list.first
+  first.title
+end
 
 end
