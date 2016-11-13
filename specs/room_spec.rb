@@ -24,6 +24,11 @@ def test_room_capacity
   assert_equal(2, @room1.capacity)
 end
 
+def test_available_space
+  @room1.check_in_guest(@guest1)
+  assert_equal(1, @room1.available_space)
+end
+
 def test_room_has_song_list
   array = @room1.song_list
   assert_equal(3, array.length)

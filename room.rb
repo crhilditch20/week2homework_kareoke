@@ -1,24 +1,29 @@
 class Room
 
-  attr_reader :name, :guests, :capacity, :song_list
+  attr_reader :name, :guests, :capacity, :song_list, :available_space
 
 def initialize(name, capacity, song_list)
   @name = name
   @capacity = capacity
   @guests = []
   @song_list = song_list
+  @available_space = nil
 end
 
-def count_guests
+def count_guests()
   @guests.length
 end
 
+def available_space
+  @available_space = (@capacity - @guests.length)
+end
+
 def check_in_guest(guest)
-  @guests.push(guest)
+  @guests.push(guest.name)
 end
 
 def check_out_guest(guest)
-  @guests.delete(guest)
+  @guests.delete(guest.name)
 end
 
 def select_song_by_title(title)

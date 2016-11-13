@@ -44,8 +44,24 @@ def test_can_add_rooms
 end
 
 def test_can_accept_guests
-  
+  @venue1.join_guest_list(@guest1)
+  @venue1.join_guest_list(@guest2)
+  assert_equal(["Claire", "Jo"], @venue1.guest_list)
+  assert_equal(212, @venue1.count_cash)
+end
 
+def test_guest_already_in_venue
+  @venue1.join_guest_list(@guest1)
+  result = @venue1.join_guest_list(@guest1)
+  assert_equal("Already in venue", result)
+end
+
+def test_can_check_guests_into_rooms
+  @venue1.add_room(@room1)
+  @venue1.join_guest_list(@guest3)
+  result = @venue1.check_guest_into_room(@guest3, @room1)
+  assert_equal(1, result)
+  assert_equal([], @venue1.guest_list)
 end
 
 
